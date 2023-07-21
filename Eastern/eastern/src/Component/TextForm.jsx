@@ -175,10 +175,10 @@ const handleExtraSpaces = ()=>{
         setText(event.target.value);
       }
   
-      const handleclipclick=async ()=>{
+      const handleclipclick=()=>{
         
-        await navigator.clipboard.writeText(text);
-        alert('Text copied');
+        navigator.clipboard.writeText(text);
+        props.showAlert('Copied to clipboard','success');
       }
   return (
     <>
@@ -200,52 +200,52 @@ const handleExtraSpaces = ()=>{
       </CardContent>
       <CardActions >
        <Grid spacing={2}>
-       <Button size="large" sx={{backgroundColor:"black", color:"white", margin:"3px", '&:hover': {
+       <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white", margin:"3px", '&:hover': {
           backgroundColor: "#e65100", // Change this to the desired hover color
         },}} onClick={handleUpFunction}>Convet to Upper Case</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white", margin:"3px", '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white", margin:"3px", '&:hover': {
           backgroundColor: '#e65100', // Change this to the desired hover color
         },}} onClick={handleDownFunction}>Convet to Lower Case</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white",margin:"3px",   '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white",margin:"3px",   '&:hover': {
           backgroundColor: '#e65100', // Change this to the desired hover color
         },}} onClick={handleClearFunction}>Clear Text</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white", margin:"3px",  '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white", margin:"3px",  '&:hover': {
           backgroundColor: '#e65100', // Change this to the desired hover color
         },}} onClick={speak}>Speak Text</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white",margin:"3px",   '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white",margin:"3px",   '&:hover': {
           backgroundColor: '#e65100', 
         },}} onClick={handleVoClick}>Count Vowels</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white",margin:"3px",   '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white",margin:"3px",   '&:hover': {
           backgroundColor: '#e65100', 
         },}} onClick={handleCoClick}>Count Constent</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white", margin:"3px",  '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white", margin:"3px",  '&:hover': {
           backgroundColor: '#e65100', 
         },}} onClick={handleReverse}>Reverse</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white", margin:"3px",  '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white", margin:"3px",  '&:hover': {
           backgroundColor: '#e65100', 
         },}} onClick={handleToggleCaseClick}>Toggle Case</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white",margin:"3px",   '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white",margin:"3px",   '&:hover': {
           backgroundColor: '#e65100', 
         },}} onClick={handleSentenceCaseClick}>Sentence</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white", margin:"3px",  '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white", margin:"3px",  '&:hover': {
           backgroundColor: '#e65100', 
         },}} onClick={handleCapitalizeWordClick }>First Character Capital</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white",margin:"3px",   '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white",margin:"3px",   '&:hover': {
           backgroundColor: '#e65100', 
         },}} onClick={handleSPerLineClick }>Setence per Line</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white",  margin:"3px", '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white",  margin:"3px", '&:hover': {
           backgroundColor: '#e65100', 
         },}} onClick={wCase  }>Casing</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white",  margin:"3px", '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white",  margin:"3px", '&:hover': {
           backgroundColor: '#e65100', 
         },}} onClick={handleExtraSpaces }>Remove  Extra Spaces</Button>
-        <Button size="large" sx={{backgroundColor:"black", color:"white",  margin:"3px", '&:hover': {
+        <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white",  margin:"3px", '&:hover': {
           backgroundColor: '#e65100', 
         },}} onClick={handleclipclick }>Copy Text</Button>
-        {/* <Button size="large" sx={{backgroundColor:"black", color:"white",  margin:"3px", '&:hover': {
+        {/* <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white",  margin:"3px", '&:hover': {
           backgroundColor: '#e65100', 
         },}} onClick={undo}>Undo</Button> */}
-        {/* <Button size="large" sx={{backgroundColor:"black", color:"white", margin:"3px",   '&:hover': {
+        {/* <Button disabled={text.length===0} size="large" sx={{backgroundColor:"black", color:"white", margin:"3px",   '&:hover': {
           backgroundColor: '#e65100', // Change this to the desired hover color
         },}} onClick={handledelete}>Find and Delete Words</Button> */}
  
@@ -255,13 +255,13 @@ const handleExtraSpaces = ()=>{
     </Card>
     <Box sx={{width:"100%" , margin :"auto" , padding:5, }}>
 <Typography variant="h4">Your Text Summary:</Typography>
-<Typography> <strong>{text.split(" ").length} </strong> words,<strong>{text.length}</strong> characters </Typography>
-<Typography><strong>{0.008* text.split(" ").length}</strong> Minutes read </Typography>
+<Typography> <strong>{text.split(/\s+/).filter((element)=>{return element.length!==0}).length} </strong> words,<strong>{text.length}</strong> characters </Typography>
+<Typography><strong>{0.008* text.split(" ").filter((element)=>{return element.length!==0}).length}</strong> Minutes read </Typography>
 <Typography><strong>{count}</strong> No. of Vowels</Typography>
 <Typography><strong>{count1}</strong> No. of Consonants</Typography>
 
 <Typography variant="h4">Preview:</Typography>
-<Typography>{text.length>1?text:"Enter Something in the text box to preview here!"} </Typography>
+<Typography>{text.length>1?text:"Nothing to preview!"} </Typography>
 
 
  </Box>

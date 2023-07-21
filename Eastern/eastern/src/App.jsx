@@ -12,7 +12,16 @@ function App() {
 const [mode, setMode]=useState('light');
 const [alert,setAlert]=useState(null);
 const [background,setBackground]=useState("light");
-const toggleMode=()=>{
+const removeBodyClass=()=>{
+  document.body.classList.remove("success");
+  document.body.classList.remove("primary");
+  document.body.classList.remove("danger");
+  document.body.classList.remove("warning");
+}
+const toggleMode=(cls)=>{
+  removeBodyClass();
+  console.log(cls);
+  document.body.classList.add('bg-'+cls);
   if(mode==="light"){
     setMode('dark');
    setBackground('dark')
@@ -102,7 +111,7 @@ const toggleMode=()=>{
             <Alert alert={alert} />
             <Routes>
               <Route exact path="/" element={<TextForm showAlert={showAlert} />} />
-              <Route exact path="/about" element={<About showAlert={showAlert} />} />
+              <Route exact path="/about" element={<About showAlert={showAlert}  />} />
             </Routes>
           </Router>
         </Box>

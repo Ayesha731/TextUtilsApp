@@ -12,7 +12,7 @@ export default function Alert1(props) {
   return lower.charAt(0).toUpperCase()+ lower.slice(1);
  }
   return (
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '100%',height:"50px" }}>
        <Collapse in={open}>
       {props.alert && (
         <Alert

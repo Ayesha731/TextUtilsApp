@@ -12,8 +12,8 @@ const Accordin = (props) => {
   
   return (
   <>
-      <Accordion style={props.style} sx={{ margin:"2px",border:"1px solid white"}} bgcolor={"background.default"} color={"text.primary"}>
-        <AccordionSummary
+      <Accordion  sx={{ margin:"2px",border:"1px solid white"}} bgcolor={"background.default"} color={"text.primary"}>
+        <AccordionSummary sx={{backgroundColor:"black",color:"white"}}
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"

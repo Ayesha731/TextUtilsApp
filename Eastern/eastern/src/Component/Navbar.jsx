@@ -45,6 +45,18 @@ const Navbar = (props) => {
                 </Link>
               </li>
             </ul>
+            <div className="d-flex">
+              <div className="bg-primary rounded mx-2" onClick={()=>{props.toggleMode("primary")}} style={{width:"30px",height:"30px",cursor:"pointer"}}></div>
+            </div>
+            <div className="d-flex">
+              <div className="bg-success rounded mx-2" onClick={()=>{props.toggleMode("success")}} style={{width:"30px",height:"30px",cursor:"pointer"}}></div>
+            </div>
+            <div className="d-flex">
+              <div className="bg-danger rounded mx-2" onClick={()=>{props.toggleMode("danger")}} style={{width:"30px",height:"30px",cursor:"pointer"}}></div>
+            </div>
+            <div className="d-flex">
+              <div className="bg-warning rounded mx-2" onClick={()=>{props.toggleMode("warning")}} style={{width:"30px",height:"30px",cursor:"pointer"}}></div>
+            </div>
             <form className="d-flex" role="search">
               <input
                 className="form-control me-2"
@@ -58,10 +70,8 @@ const Navbar = (props) => {
              
             </form>
            
-            <Switch {...label}  onClick={props.toggleMode}/>
-            {/* <Switch {...label}  onClick={props.toggleMode}/>
-            <Switch {...label}  onClick={props.toggleMode}/>
-            <Switch {...label}  onClick={props.toggleMode}/> */}
+            <Switch {...label}  onClick={()=>{props.toggleMode(null)}}/>
+           
           </div>
         </div>
       </nav>
